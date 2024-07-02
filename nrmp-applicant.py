@@ -8,24 +8,24 @@ import collections
 import copy
 
 rankApplicant = {
-	'Arthur': 	['City'],
-	'Sunny': 	['City', 'Mercy'],
-	'Joseph':  	['City', 'General', 'Mercy'],
-	'Latha':	['Mercy', 'City', 'General'],
-	'Darrius':	['City', 'Mercy', 'General'],
+	'Arthur': 	['Projet_02'],
+	'Pierre': 	['Projet_02', 'Projet_01'],
+	'Joseph':  	['Projet_02', 'Projet_03', 'Projet_01'],
+	'Laurent':	['Projet_01', 'Projet_02', 'Projet_03'],
+	'Lucie':	['Projet_02', 'Projet_01', 'Projet_03'],
 }
 
 rankProgram = {
-	'Mercy': 	['Darrius', 'Joseph'],
-	'City': 	['Darrius', 'Arthur', 'Sunny', 'Latha','Joseph'],
-	'General': 	['Darrius', 'Arthur', 'Joseph', 'Latha'],
+	'Projet_01': 	['Lucie', 'Joseph'],
+	'Projet_02': 	['Lucie', 'Arthur', 'Pierre', 'Laurent','Joseph'],
+	'Projet_03': 	['Lucie', 'Arthur', 'Joseph', 'Laurent'],
 	
 }
 
 positionProgram = {
-	'Mercy'		: 2,
-	'City'		: 2,
-	'General'	: 2,
+	'Projet_01'	: 2,
+	'Projet_02'	: 2,
+	'Projet_03'	: 2,
 }
 
 programMatchs 	= {}
@@ -41,7 +41,7 @@ def matching(applicant):
 	'''If Applicant not have program again, remove from free Applicant '''
 	if(len(rankApplicant[applicant])==0):
 		freeApplicant.remove(applicant)
-		print('- Applicant %s not have program to check again '%(applicant))
+		print('- Le candidat %s n\'a pas de projet à vérifier de nouveau ' %(applicant))
 					
 	else:
 		for program in rankApplicant[applicant]:
@@ -49,18 +49,18 @@ def matching(applicant):
 			#Cek whether program is full or not
 			if len(programMatchs[program]) < positionProgram[program]:
 				if applicant not in rankProgram[program]:
-					print('- Applicant %s not exist in list applicant in program %s '%(applicant,program))
+					print('- Le candidat %s n\'est pas elligible au projet %s '%(applicant,program))
 					checkApplicant[applicant].remove(program)
 				else:	
 					programMatchs[program].append(applicant)
 					freeApplicant.remove(applicant)
-					print('- %s is no longer a free applicant and is now tentatively get program %s'%(applicant, program))
+					print('- %s n\'est plus un candidat libre et bénéficie désormais provisoirement du projet %s'%(applicant, program))
 					break
 			else:
-				print('- %s is full (%s participant) '%(program,positionProgram[program]))
+				print('- Le projet %s est complet (%s participant(s)) '%(program,positionProgram[program]))
 
 				if applicant not in rankProgram[program]:
-					print('- Applicant %s not exist in list applicant in program %s '%(applicant,program))
+					print('- Le candidat %s n\'existe pas dans la liste des candidats au projet %s '%(applicant,program))
 					checkApplicant[applicant].remove(program)
 				else :
 					# get applicant who can remove, 
@@ -70,11 +70,11 @@ def matching(applicant):
 							applicantRemove = applicantMatch
 
 					if applicantRemove==applicant:
-						print('- Rank Applicant %s in Program %s is bigger then other current applicant match '%(applicant,program))
+						print('- Le classement du candidat %s pour le projet %s is moins bon que les candidats actuellement affectés '%(applicant,program))
 						checkApplicant[applicant].remove(program)
 					else:
-						print('- %s is better than %s'%(applicant, applicantRemove))
-						print('- Making %s free again.. and tentatively match %s and %s'%(applicantRemove, applicant, program))
+						print('- %s est mieux classé que %s'%(applicant, applicantRemove))
+						print('- Déaffectation de %s .. et affectation provisoire du candidat %s au projet %s'%(applicantRemove, applicant, program))
 
 						#The new applicant have match 
 						freeApplicant.remove(applicant)

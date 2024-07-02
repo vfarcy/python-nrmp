@@ -8,24 +8,24 @@ import collections
 import copy
 
 rankApplicant = {
-	'Arthur': 	['City'],
-	'Sunny': 	['City', 'Mercy'],
-	'Joseph':  	['City', 'General', 'Mercy'],
-	'Latha':	['Mercy', 'City', 'General'],
-	'Darrius':	['City', 'Mercy', 'General'],
+	'Arthur': 	['Projet_02'],
+	'Pierre': 	['Projet_02', 'Projet_01'],
+	'Joseph':  	['Projet_02', 'Projet_03', 'Projet_01'],
+	'Laurent':	['Projet_01', 'Projet_02', 'Projet_03'],
+	'Lucie':	['Projet_02', 'Projet_01', 'Projet_03'],
 }
 
 rankProgram = {
-	'Mercy': 	['Darrius', 'Joseph'],
-	'City': 	['Darrius', 'Arthur', 'Sunny', 'Latha','Joseph'],
-	'General': 	['Darrius', 'Arthur', 'Joseph', 'Latha'],
+	'Projet_01': 	['Lucie', 'Joseph'],
+	'Projet_02': 	['Lucie', 'Arthur', 'Pierre', 'Laurent','Joseph'],
+	'Projet_03': 	['Lucie', 'Arthur', 'Joseph', 'Laurent'],
 	
 }
 
 positionProgram = {
-	'Mercy'		: 2,
-	'City'		: 2,
-	'General'	: 2,
+	'Projet_01'	: 2,
+	'Projet_02'	: 2,
+	'Projet_03'	: 2,
 }
 
 

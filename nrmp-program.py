@@ -44,7 +44,7 @@ def matching(program):
 
 	if(len(rankProgram[program])==0 or positionProgram[program] < 1):
 		freeProgram.remove(program)
-		print('- Program %s not have applicant to check or not have slot again '%(program))
+		print('- Le projet %s n\'a pas de candidat à vérifier ou n\'a plus de place disponible '%(program))
 					
 	else:
 		for applicant in rankProgram[program]:
@@ -52,29 +52,29 @@ def matching(program):
 			#Cek whether applicant is taken or not
 			if applicantMatchs[applicant] == "":
 				if program not in rankApplicant[applicant]:
-					print('- Program %s not exist in list program in applicant %s '%(program,applicant))
+					print('- Le projet %s n\'est pas demandé par le candidat %s '%(program,applicant))
 					checkProgram[program].remove(applicant)
 				else:	
 					applicantMatchs[applicant]=program
 					positionProgram[program]-= 1
 
-					print('- %s is now tentatively get applicant %s '%(program, applicant))
+					print('- Le projet %s est temporairement affecté au candidat %s '%(program, applicant))
 					break
 			else:
-				print('- %s is already get program %s '%(applicant,applicantMatchs[applicant]))
+				print('- Le candidat %s est provisoirement affecté au projet %s '%(applicant,applicantMatchs[applicant]))
 
 				if program not in rankApplicant[applicant]:
-					print('- Program %s not exist in list program in applicant %s '%(program,applicant))
+					print('- Le projet %s n\'est pas demandé par le candidat %s '%(program,applicant))
 					checkProgram[program].remove(applicant)
 
 				else :
 					# get program who can remove, 
 					if rankApplicant[applicant].index(applicantMatchs[applicant]) < rankApplicant[applicant].index(program): 
-						print('- Rank Program %s in Applicant %s is bigger then current program %s  '%(program,applicant,applicantMatchs[applicant]))
+						print('- Le classement du projet %s pour le candidat %s est supérieur au projet actuel %s  '%(program,applicant,applicantMatchs[applicant]))
 						checkProgram[program].remove(applicant)
 					else:
-						print('- %s is better than %s'%(program, applicantMatchs[applicant]))
-						print('- Making %s free again.. and tentatively match %s and %s'%(applicantMatchs[applicant], program, applicant))
+						print('- Le projet %s correspont mieux que le projet %s'%(program, applicantMatchs[applicant]))
+						print('- Nouvelle déaffectation du candidat %s .. and affectation provisoire du projet %s au candidat %s'%(applicantMatchs[applicant], program, applicant))
 
 						#The old program is now not match anymore
 						positionProgram[applicantMatchs[applicant]] += 1

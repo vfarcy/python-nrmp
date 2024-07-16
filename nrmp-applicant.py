@@ -7,12 +7,13 @@ The NRM with Applicant Proposing First
 import collections
 import copy
 
+
 rankApplicant = {
 	'Arthur': 	['Projet_02'],
 	'Pierre': 	['Projet_02', 'Projet_01'],
-	'Joseph':  	['Projet_02', 'Projet_03', 'Projet_01'],
+	'Joseph':  	['Projet_01', 'Projet_03', 'Projet_02'],
 	'Laurent':	['Projet_01', 'Projet_02', 'Projet_03'],
-	'Lucie':	['Projet_02', 'Projet_01', 'Projet_03'],
+	'Lucie':	['Projet_03', 'Projet_01', 'Projet_02'],
 }
 
 rankProgram = {
@@ -22,9 +23,11 @@ rankProgram = {
 	
 }
 
+
+
 positionProgram = {
 	'Projet_01'	: 2,
-	'Projet_02'	: 2,
+	'Projet_02'	: 5,
 	'Projet_03'	: 2,
 }
 

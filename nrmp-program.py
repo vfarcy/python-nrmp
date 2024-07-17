@@ -77,7 +77,7 @@ def matching(program):
 						checkProgram[program].remove(applicant)
 					else:
 						print('- Le projet %s correspont mieux que le projet %s'%(program, applicantMatchs[applicant]))
-						print('- Nouvelle déaffectation du candidat %s .. and affectation provisoire du projet %s au candidat %s'%(applicantMatchs[applicant], program, applicant))
+						print('- Nouvelle déaffectation du projet %s .. et affectation provisoire du projet %s au candidat %s'%(applicantMatchs[applicant], program, applicant))
 
 						#The old program is now not match anymore
 						positionProgram[applicantMatchs[applicant]] += 1
